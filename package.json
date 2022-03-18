@@ -1,0 +1,16 @@
+{
+  "name": "Thegraphonopensea",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy abhijeet0401/thegraphopensea --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
+    "create-local": "graph create --node http://localhost:8020/ abhijeet0401/thegraphopensea",
+    "remove-local": "graph remove --node http://localhost:8020/ abhijeet0401/thegraphopensea",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 abhijeet0401/openseagraphsubgraph"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.25.1",
+    "@graphprotocol/graph-ts": "0.24.1"
+  }
+}

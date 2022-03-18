@@ -1,0 +1,38 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Contract
+    network: mainnet
+    source:
+      address: "0x2b3ab8e7bb14988616359b78709538b10900ab7d"
+      abi: Contract
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - AuctionCreated
+        - AuctionSuccessful
+        - AuctionCancelled
+        - Pause
+        - Unpause
+        - OwnershipTransferred
+      abis:
+        - name: Contract
+          file: ./abis/Contract.json
+      eventHandlers:
+        - event: AuctionCreated(address,uint256,uint256,uint256,uint256)
+          handler: handleAuctionCreated
+        - event: AuctionSuccessful(address,uint256,uint256,address)
+          handler: handleAuctionSuccessful
+        - event: AuctionCancelled(address,uint256)
+          handler: handleAuctionCancelled
+        - event: Pause()
+          handler: handlePause
+        - event: Unpause()
+          handler: handleUnpause
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: ./src/mapping.ts
